@@ -1,0 +1,58 @@
+<div class="tab-pane fade in active">
+    <h3 class="head text-center">{{vm.title}}</h3>
+    <p class="narrow text-center" id="result">
+        Here is a copy of the information you have entered <br> please feel free to double check it before submitting:
+    </p>
+    <br/>
+    <div class='row'>
+        <div class='col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-8 col-md-offset-4 col-md-8'>
+            <div class="row">
+                <div class='col-xs-3 col-sm-2'>
+                    <div class="form-group">
+                        <label class="control-label" for="name">Name: </label> 
+                    </div>
+                </div>
+                <div class='col-xs-9 col-sm-10'>
+                    {{formData.firstName + ' ' + formData.lastName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-xs-3 col-sm-2'>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email: </label> 
+                    </div>
+                </div>
+                <div class='col-xs-9 col-sm-10'>
+                    {{formData.email}}
+                </div>
+           </div>     
+           <div class="row">
+                <div class='col-xs-3 col-sm-2'>
+                    <div class="form-group">
+                        <label class="control-label" for="company">Company: </label>
+                    </div>
+                </div>
+                <div class='col-xs-9 col-sm-10'>
+                    {{formData.companyName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class='col-xs-3 col-sm-2'>
+                    <div class="form-group">
+                        <label class="control-label" for="finances">Investment: </label> 
+                    </div>
+                </div>
+                <div class='col-xs-9 col-sm-10'>
+                    {{formData.finances}}
+                </div>
+           </div>     
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group text-center">
+        <div class="col-xs-4 col-xs-offset-4 ">
+            <a class="btn btn-success btn-outline-rounded btn-success"> Submit <span style="margin-left:10px;" class="glyphicon glyphicon-ok"></span></a>
+        </div>
+    </div>
+</div>
