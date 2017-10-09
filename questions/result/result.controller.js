@@ -9,7 +9,7 @@
  
     function ResultController() {
         var vm = this;
-        vm.title = 'Thanks for signing up!';
+        vm.title = 'Thanks for signing up for VenturX!';
         
         activate();
  

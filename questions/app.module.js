@@ -30,7 +30,7 @@
                     controller: 'PersonalController',
                     controllerAs: 'vm'
                 })
-        
+
                 // URL will become '/form/finances'
                 .state('form.finances', {
                     url: '/finances',

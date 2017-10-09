@@ -12,7 +12,6 @@
         vm.title = 'Multi-Step Wizard';
         // we will store all of our form data in this object
         $scope.formData = new FormDataModel();
-
         activate();
  
         ////////////////
