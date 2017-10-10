@@ -1,53 +1,78 @@
 (function() {
-        'use strict';
+    'use strict';
 
-        angular
-            .module('wizardApp')
-            .controller('PersonalController', PersonalController);
+    angular
+        .module('wizardApp')
+        .controller('PersonalController', PersonalController);
 
-        PersonalController.$inject = ['$scope', '$state'];
+    PersonalController.$inject = ['$scope', '$state'];
 
-        function PersonalController($scope, $state) {
-            var vm = this;
-            vm.title = 'Please tell us about yourself.';
+    function PersonalController($scope, $state) {
+        var vm = this;
+        vm.title = 'Please tell us about yourself.';
 
-            $scope.personalState = 0;
+        $scope.personalState = 0;
 
-            $scope.currentState = function(param) {
-                if ($scope.validateForm()) {
-                    $scope.personalState = param;
-                }
+        //Used to set which page of the section we are on
+        $scope.currentState = function(param) {
+            if ($scope.validateForm()) {
+                $scope.personalState = param;
             }
+        }
 
-            $scope.goToNext = function(){
-                if ($scope.validateForm()){
-                    $state.go("form.company")
-                }
+        //To move to next section
+        $scope.goToNext = function() {
+            if ($scope.validateForm()) {
+                $state.go("form.company")
             }
+        }
 
-            $scope.validateForm = function() {
+        //All Validation happens here, based on personalState
+        $scope.validateForm = function() {
 
+            //Page 1
+            if ($scope.personalState === 0) {
+
+                //Email Format
                 if ($scope.formData.email !== null && $scope.formData.email !== "") {
                     var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
                     var email = $scope.formData.email
                     if (reg.test(email) == false) {
-                    $scope.error = "Please enter a valid E-mail Address"
-                    $scope.hasError = true;
-                    return false
+                        $scope.error = "Please enter a valid E-mail Address"
+                        $scope.hasError = true;
+                        return false;
                     }
                 }
-
-                if(isNaN($scope.formData.age)){
-                    $scope.error = "Please enter a number as your age"
+                //Email Is Not Blank
+                if ($scope.formData.email === "" || $scope.formData.email === null) {
+                    $scope.error = "Email is required"
                     $scope.hasError = true;
                     return false;
                 }
+            }
+
+            //Page 2
+            if ($scope.personalState === 1) {
+                //Password Matching
+                if ($scope.formData.password !== "" && $scope.formData.passwordVerification !== ""
+                    && $scope.formData.password !== null && $scope.formData.passwordVerification !== null) {
+                    if ($scope.formData.password !== $scope.formData.passwordVerification) {
+                        $scope.error = "Passwords must match"
+                        $scope.hasError = true;
+                        return false;
+                    }
+                }
+                //Password Is Not Blank
+                if ($scope.formData.password === "") {
+                    $scope.error = "Password is required"
+                    $scope.hasError = true;
+                    return false;
+                }
+            }
 
             $scope.hasError = false;
             return true;
         }
-
 
         activate();
 

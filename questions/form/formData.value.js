@@ -9,8 +9,8 @@
         this.firstName = '';
         this.lastName = '';
         this.email = '';
-        this.age = '';
-        this.gender = '';
+        this.password = '';
+        this.passwordVerification = '';
         this.companyName = '';
         this.finances = '';
 
