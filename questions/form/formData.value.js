@@ -14,6 +14,7 @@
         this.companyName = '';
         this.startDate = '';
         this.capitalInvestment = '';
-
+        this.agreeStatement = true;
+        this.agreeEmails = true;
     }
 })();
