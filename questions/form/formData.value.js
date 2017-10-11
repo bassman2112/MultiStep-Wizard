@@ -12,7 +12,8 @@
         this.password = '';
         this.passwordVerification = '';
         this.companyName = '';
-        this.finances = '';
+        this.startDate = '';
+        this.capitalInvestment = '';
 
     }
 })();

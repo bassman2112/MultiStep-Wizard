@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="wizardApp">
-<head>
-    <meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Wizard Demo</title>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" />
-    <link rel="stylesheet" href="content/css/riliwan-rabo.css" />
-    <link rel="stylesheet" href="content/css/style.css" />
-</head>
-<body>
-
-    <!-- View is injected here -->
-
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Wizard Demo</title>
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" />
+        <link rel="stylesheet" href="content/css/riliwan-rabo.css" />
+        <link rel="stylesheet" href="content/css/style.css" />
+    </head>
+    <body>
+        <!-- View is injected here -->
         <div class="container">
             <div ui-view></div>
         </div>
         
-
-
-    <!-- Angular & JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- Angular App -->
-    <script src="questions/app.module.js"></script>
-
-    <!-- Wizard - Form feature  -->
-    <script src="questions/form/form.controller.js"></script>
-    <script src="questions/form/formData.value.js"></script>
-
-    <!-- Wizard - Personal feature -->
-    <script src="questions/personal/personal.controller.js"></script>
-    <script src="questions/personal1/personal1.controller.js"></script>
-
-    <!-- Wizard - Finances feature -->
-    <script src="questions/finances/finances.controller.js"></script>
-
-    <!-- Wizard - Company feature -->
-    <script src="questions/company/company.controller.js"></script>
-
-    <!-- Wizard - Result feature -->
-    <script src="questions/result/result.controller.js"></script>
-
-</body>
+        <!-- Angular & JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+        
+        <!-- Angular App -->
+        <script src="questions/app.module.js"></script>
+        <!-- Wizard - Form feature  -->
+        <script src="questions/form/form.controller.js"></script>
+        <script src="questions/form/formData.value.js"></script>
+        <!-- Wizard - Personal feature -->
+        <script src="questions/personal/personal.controller.js"></script>
+        <!-- Wizard - Metrics feature -->
+        <script src="questions/metrics/metrics.controller.js"></script>
+        <!-- Wizard - Company feature -->
+        <script src="questions/company/company.controller.js"></script>
+        <!-- Wizard - Result feature -->
+        <script src="questions/result/result.controller.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"></style>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </body>
 </html>

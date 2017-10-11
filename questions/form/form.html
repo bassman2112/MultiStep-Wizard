@@ -14,20 +14,21 @@
                     </a>
                 </li>
 
-                <!-- circular tasks icon -->
+                <!-- circular building icon -->
                 <li>
                     <a ui-sref-active="active" ui-sref=".company" data-toggle="tab" title="company">
                         <span class="round-tabs three">
-                            <i class="glyphicon glyphicon-tasks"></i>
+                            <i style="padding-left:1px" class="fa fa-building" aria-hidden="true"></i>
+
                         </span>
                     </a>
                 </li>
                 
-                <!-- circular dollar icon -->
+                <!-- circular stats icon -->
                 <li>
-                    <a ui-sref-active="active" ui-sref=".finances" data-toggle="tab" title="finances">
+                    <a ui-sref-active="active" ui-sref=".metrics" data-toggle="tab" title="metrics">
                         <span class="round-tabs two">
-                            <i class="glyphicon glyphicon-usd"></i>
+                            <i class="glyphicon glyphicon-stats"></i>
                         </span> 
                     </a>
                 </li>
@@ -54,9 +55,11 @@
         <!-- End Content Area -->
     </div>
     
-    <div class="clearfix"></div>
     <!-- For Debugging: show our formData as it is being typed -->
+    <!--
+    <div class="clearfix"></div> 
     <pre>{{ formData | json }}</pre>
+    -->
 
 </div>
 

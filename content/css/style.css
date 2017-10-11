@@ -67,3 +67,7 @@
 .iradio_buttons.checked {
     background-position: -168px 0;
 }
+
+.resultsTitle {
+    text-decoration: underline;
+}

@@ -31,11 +31,11 @@
                     controllerAs: 'vm'
                 })
 
-                // URL will become '/form/finances'
-                .state('form.finances', {
-                    url: '/finances',
-                    templateUrl: 'questions/finances/finances.html',
-                    controller: 'FinancesController',
+                // URL will become '/form/metrics'
+                .state('form.metrics', {
+                    url: '/metrics',
+                    templateUrl: 'questions/metrics/metrics.html',
+                    controller: 'MetricsController',
                     controllerAs: 'vm'
                 })
         
