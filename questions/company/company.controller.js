@@ -23,13 +23,17 @@
     };
 });
  
-    CompanyController.$inject = ['$scope', '$state'];
+    CompanyController.$inject = ['$scope', '$state', '$location', '$stateParams'];
  
-    function CompanyController($scope, $state) {
+    function CompanyController($scope, $state, $location, $stateParams) {
         var vm = this;
         vm.title = 'Tell us about your company!';
 
         $scope.companyState = 0;
+
+        if ($stateParams.currentState && $stateParams.currentState >= 0 && $stateParams.currentState <= 4){
+            $scope.companyState = parseInt($stateParams.currentState);
+        }
 
         //Used to set which page of the section we are on
         $scope.currentState = function(param) {
@@ -45,7 +49,16 @@
             }
         }
 
+        $scope.goToPrev = function(state) {
+            if ($scope.validateForm()) {
+                $location.path("/form/personal/1")
+            }
+        }
+
         $scope.validateForm = function(){
+            if($scope.companyState === 2){
+                
+            }
             return true;
         }
 
@@ -56,12 +69,14 @@
             }
         });
 
+
         activate();
  
         ////////////////
  
         function activate() {
-            console.log('Company feature loaded!');
+            
+           
         }
     }
 })();

@@ -1,3 +1,7 @@
+.control-label{
+    text-align:left !important;
+}
+
 .btn-default {
     border-color: #ccc;
 }

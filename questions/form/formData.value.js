@@ -12,6 +12,7 @@
         this.password = '';
         this.passwordVerification = '';
         this.companyName = '';
+        this.companySell = '';
         this.startDate = '';
         this.capitalInvestment = '';
         this.agreeStatement = true;

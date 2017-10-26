@@ -12,7 +12,7 @@
         function($stateProvider, $urlRouterProvider) {
 
             // For any unmatched url, redirect to /form/personal
-            $urlRouterProvider.otherwise('/form/personal');
+            $urlRouterProvider.otherwise('/form/personal/');
     
             $stateProvider
                 // PARENT STATE: form state
@@ -25,7 +25,7 @@
                 // NESTED STATES: child states of 'form' state 
                 // URL will become '/form/personal'
                 .state('form.personal', {
-                    url: '/personal',
+                    url: '/personal/:currentState',
                     templateUrl: 'questions/personal/personal.html',
                     controller: 'PersonalController',
                     controllerAs: 'vm'
@@ -41,7 +41,7 @@
         
                 // URL will become '/form/company'
                 .state('form.company', {
-                    url: '/company',
+                    url: '/company/:currentState',
                     templateUrl: 'questions/company/company.html',
                     controller: 'CompanyController',
                     controllerAs: 'vm'

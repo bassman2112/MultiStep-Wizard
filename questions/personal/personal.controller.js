@@ -5,13 +5,19 @@
         .module('wizardApp')
         .controller('PersonalController', PersonalController);
 
-    PersonalController.$inject = ['$scope', '$state'];
+    PersonalController.$inject = ['$scope', '$state', '$stateParams'];
 
-    function PersonalController($scope, $state) {
+    function PersonalController($scope, $state, $stateParams) {
         var vm = this;
         vm.title = 'Please tell us about yourself.';
-
         $scope.personalState = 0;
+
+        if ($stateParams.currentState && $stateParams.currentState >= 0 && $stateParams.currentState <= 1){
+            $scope.personalState = parseInt($stateParams.currentState);
+        }
+  
+
+
 
         //Used to set which page of the section we are on
         $scope.currentState = function(param) {
@@ -79,7 +85,7 @@
         ////////////////
 
         function activate() {
-            console.log('Personal feature loaded!');
+         
         }
     }
 })();

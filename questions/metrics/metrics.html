@@ -1,20 +1,320 @@
-<div class="tab-pane fade in active">
+<!--**** Elevator Pitch: Market ****-->
+<div ng-hide="metricsState !== 0" class="tab-pane fade in active">
     <div class="form-horizontal">
-        <h4 class="head text-center">{{vm.title}}</h4>
+        <h4 class="head text-center">Elevator Pitch: Market</h4>
         <br/>
         <div class='row'>
             <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
                 <div class="form-group">
-                    <label class="control-label" for="capitalInvestment">This is placeholder</label>
-                    <!--<div class="input-group"> <span class="input-group-addon">$</span>
-                    <input class="form-control input-md" id="capitalInvestment" name="capitalInvestment" type="text" placeholder="Capital Investment" ng-model="formData.capitalInvestment"></input>
-                </div>-->
+                    <label class="control-label" for="targetMarket">Please specify your target market (i.e. who are your intended customers?)</label>
+                    <input class="form-control input-md" id="targetMarket" name="targetMarket" type="text" placeholder="Target Market" ng-model="formData.targetMarket"></input>
+                </div>
             </div>
         </div>
     </div>
     <div class="form-group text-center space-20">
-        <a ui-sref="form.company" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
-        <a ui-sref="form.result" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+        <a ng-click="goToPrev()" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(1)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
     </div>
 </div>
+<!--**** Elevator Pitch: Pain ****-->
+<div ng-hide="metricsState !== 1" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Elevator Pitch: Pain</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="pain">Please specify the problem you want to solve for your customers</label>
+                    <input class="form-control input-md" id="pain" name="pain" type="text" placeholder="Market Pain" ng-model="formData.pain"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(0)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(2)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Elevator Pitch: Benefit ****-->
+<div ng-hide="metricsState !== 2" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Elevator Pitch: Benefit</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="benefit">Please specify the benefit you will provide to your customers</label>
+                    <input class="form-control input-md" id="benefit" name="benefit" type="text" placeholder="Market Benefit" ng-model="formData.benefit"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(1)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(3)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Product Market Fit: Surveyed ****-->
+<div ng-hide="metricsState !== 3" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Product Market Fit: Surveyed</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="productSurveyed">How many people did you survey in this target market?</label>
+                    <input class="form-control input-md" id="productSurveyed" name="productSurveyed" type="number" placeholder="Surveyed" ng-model="formData.productSurveyed"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(2)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(4)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Product Market Fit: Pain ****-->
+<div ng-hide="metricsState !== 4" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Product Market Fit: Pain</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="productPain06">Of the {{formData.productSurveyed}} that you surveyed, how many rated the pain as 0 - 6? (i.e. not very painful)</label>
+                    <input class="form-control input-md" id="productPain06" name="productPain06" type="number" placeholder="Pain (0 - 6)" ng-model="formData.productPain06"></input>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="productPain78">Of the {{formData.productSurveyed}} that you surveyed, how many rated the pain as 7 - 8? (i.e. sort of painful) </label>
+                    <input class="form-control input-md" id="productPain78" name="productPain78" type="number" placeholder="Pain (7 - 8)" ng-model="formData.productPain78"></input>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="productPain910">Of the {{formData.productSurveyed}} that you surveyed, how many rated the pain as 9 - 10? (i.e. VERY painful)</label>
+                    <input class="form-control input-md" id="productPain910" name="productPain910" type="number" placeholder="Pain (9 - 10)" ng-model="formData.productPain910"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(3)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(5)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Product Market Fit: Benefit ****-->
+<div ng-hide="metricsState !== 5" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Product Market Fit: Benefit</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="productBenefit06">Of the {{formData.productSurveyed}} that you surveyed, how many rated the benefit as 0 - 6? (i.e. not very useful)</label>
+                    <input class="form-control input-md" id="productBenefit06" name="productBenefit06" type="number" placeholder="Benefit (0 - 6)" ng-model="formData.productBenefit06"></input>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="productBenefit78">Of the {{formData.productSurveyed}} that you surveyed, how many rated the benefit as 7 - 8? (i.e. "nice to have") </label>
+                    <input class="form-control input-md" id="productBenefit78" name="productBenefit78" type="number" placeholder="Benefit (7 - 8)" ng-model="formData.productBenefit78"></input>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="productBenefit910">Of the {{formData.productSurveyed}} that you surveyed, how many rated the benefit as 9 - 10? (i.e. "MUST have")</label>
+                    <input class="form-control input-md" id="productBenefit910" name="productBenefit910" type="number" placeholder="Benefit (9 - 10)" ng-model="formData.productBenefit910"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(4)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(6)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Product Market Fit: Price ****-->
+<div ng-hide="metricsState !== 6" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Product Market Fit: Price</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="productPrice">On average, how much is <i>too much</i> for customers to pay for your benefit?</label>
+                    <input class="form-control input-md" id="productPrice" name="productPrice" type="number" placeholder="Price" ng-model="formData.productPrice"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(5)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(7)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Conversion: Pre-orders ****-->
+<div ng-hide="metricsState !== 7" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Conversion: Pre-orders</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="conversionPreorder">How many people paid for a pre-order? (i.e. paid in advance)</label>
+                    <input class="form-control input-md" id="conversionPreorder" name="conversionPreorder" type="number" placeholder="Pre-orders" ng-model="formData.conversionPreorder"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(6)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(8)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Conversion: Letter of Intent ****-->
+<div ng-hide="metricsState !== 8" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Conversion: Letter of Intent</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="conversionIntent">If applicable, how many people signed a Letter of Intent/Promise to Purchase?</label>
+                    <input class="form-control input-md" id="conversionIntent" name="conversionIntent" type="number" placeholder="Users who signed letter" ng-model="formData.conversionIntent"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(7)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(9)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Conversion: Contact Information ****-->
+<div ng-hide="metricsState !== 9" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Conversion: Contact Information</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="conversionContact">Not including those who gave you Pre-Orders or Letters of Intent, how many people gave you their contact information? (such as an email address) </label>
+                    <input class="form-control input-md" id="conversionContact" name="conversionContact" type="number" placeholder="Users who provided Contact Information" ng-model="formData.conversionContact"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(8)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(10)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Engagement: Users ****-->
+<div ng-hide="metricsState !== 10" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Engagement: Users</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="engagementUsers">How many users or customers do you currently have? </label>
+                    <input class="form-control input-md" id="engagementUsers" name="engagementUsers" type="number" placeholder="Users" ng-model="formData.engagementUsers"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(9)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(11)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Engagement: Signed Back On ****-->
+<div ng-hide="metricsState !== 11" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Engagement: Signed back on</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="engagementReSigned">Of your current users/customers, how many people signed on more than once or visited your business more than once? (may not be applicable to all industries) </label>
+                    <input class="form-control input-md" id="engagementReSigned" name="engagementReSigned" type="number" placeholder="Users who Signed Back On" ng-model="formData.engagementReSigned"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(10)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(12)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Engagement: User Usage ****-->
+<div ng-hide="metricsState !== 12" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Engagement: User usage</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="engagementUsed">How many users/customers used the product or service? </label>
+                    <input class="form-control input-md" id="engagementUsed" name="engagementUsed" type="number" placeholder="How many Users/Customers Used" ng-model="formData.engagementUsed"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(11)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(13)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Engagement: User Referrals ****-->
+<div ng-hide="metricsState !== 13" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Engagement: User Referrals</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="engagementReferral">How many users/customers gave you a referral? (to another potential customer) <i>This question is optional</i> </label>
+                    <input class="form-control input-md" id="engagementReferral" name="engagementReferral" type="number" placeholder="How many Users/Customers gave Referrals" ng-model="formData.engagementReferral"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(12)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(14)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Engagement: Users More than Once ****-->
+<div ng-hide="metricsState !== 14" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Engagement: User Using More than once</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="engagementUsedw">How many users/customers used your product more than two times in the same week? (May not be applicable to all industries) <i>This question is optional</i> </label>
+                    <input class="form-control input-md" id="engagementUsedw" name="engagementUsedw" type="number" placeholder="Users/customers Used Product/Service More than Once" ng-model="formData.engagementUsedw"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(13)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="currentState(15)" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+</div>
+<!--**** Runway: Capital Investment ****-->
+<div ng-hide="metricsState !== 15" class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">Runway: Capital Investment</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="form-group">
+                    <label class="control-label" for="runwayCapitalInvestment">How much money have you put in to start the business?</label>
+                    <input class="form-control input-md" id="runwayCapitalInvestment" name="runwayCapitalInvestment" type="number" placeholder="Capital Investment" ng-model="formData.runwayCapitalInvestment"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center space-20">
+        <a ng-click="currentState(14)" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+        <a ng-click="goToNext()" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
 </div>
